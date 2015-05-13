@@ -37,4 +37,11 @@
     }
 */
 
+'use strict';
 
+/* App Module */
+
+var repoSearchApp = angular.module('repoSearchApp', [
+  'repoSearchApp.controllers',
+  'repoSearchApp.services'
+]);
