@@ -1,1 +1,9 @@
 results
+logs/*
+!.gitkeep
+node_modules/
+tmp
+.idea
+.DS_Store
+frontend-exercise-snapshots
+bower_components/
