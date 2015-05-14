@@ -32,6 +32,14 @@ span.in {
 	width: 25%;
 }
 
+
+/** TOAST **/
+
+#toast-container {
+	top: 20%;
+	right: 50%;
+}
+
 @media screen and (max-width: 600px) {
 	.nav-search .input-field input {
 		background-color: #5d4037;
@@ -44,4 +52,15 @@ span.in {
 	span.in {
 		color: #5d4037;
 	}
+
+	#toast-container {
+		bottom: 0%;
+		width: 100%;
+	}
+}
+
+/** RESULTS **/
+
+#resultsList {
+	margin-top: 20px;
 }

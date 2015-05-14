@@ -3,17 +3,18 @@
 <head>
   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
   <title>Search</title>
-  <link rel="stylesheet" href="bower_components/materialize/bin/materialize.css">
+  <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
   <link rel="stylesheet" href="css/app.css">
   <!-- <link rel="stylesheet" href="css/animations.css"> -->
 
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/materialize/bin/materialize.js"></script>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/underscore/underscore-min.js"></script>
+  <script src="bower_components/materialize/dist/js/materialize.min.js"></script>
   <!-- <script src="bower_components/angular-animate/angular-animate.js"></script> -->
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="js/config.js"></script>
+  <script src="js/directives.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/services.js"></script>
   <script src="js/app.js"></script>
@@ -33,7 +34,9 @@
 				<div class="nav-part nav-search col m6 s12" style="padding: 0;">
 					<form class="nav-search-bar">
 						<div class="input-field">
-							<input id="search" type="search" required>
+							<input id="search" type="search" required 
+								ng-model="searchKeyword" 
+								ng-enter="searchGithub()">
 							<label for="search"><i class="mdi-action-search"></i></label>
 						</div>
 					</form>
@@ -43,7 +46,7 @@
 					<a class="categ-button waves-effect waves-light" 
 						ng-repeat="category in categories" 
 						ng-class="category.selected ? 'btn' : 'btn transparent'"
-						ng-click="category_select(category.selected, $index)">
+						ng-click="categorySelect(category.selected, $index)">
 						{{category.name}}
 						</a>
 				</div>
@@ -51,7 +54,29 @@
 		</div>
 	</nav>
 	<div class="container">
-
+		<div class="switch" ng-switch="searchingNow">
+			<div ng-switch-when=true>
+				<div class="preloader-wrapper big active">
+					<div class="spinner-layer spinner-blue">
+					<div class="circle-clipper left">
+					<div class="circle"></div>
+					</div><div class="gap-patch">
+					<div class="circle"></div>
+					</div><div class="circle-clipper right">
+					<div class="circle"></div>
+					</div>
+					</div>
+				</div>
+			</div>
+			<div ng-switch-default>
+				<ul id="resultsList" class="collapsible" data-collapsible="accordion">
+					<li class="result" ng-repeat="result in results">
+						<div class="collapsible-header"><i class="mdi-image-filter-drama"></i>{{result.full_name}}</div>
+						<div class="collapsible-body">{{result.git_url}}</div>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
