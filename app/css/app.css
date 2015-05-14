@@ -1,3 +1,9 @@
+/* BASE HTML */
+
+html {
+	font-size: 16px;
+}
+
 /* NAVBAR */
 
 .nav-part {
@@ -6,30 +12,37 @@
 }
 
 .nav-brand-logo {
-	font-size: 24px;
+	font-size: 1.5rem;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 nav .nav-wrapper i.mdi-action-search {
-	font-size: 24px;
+	font-size: 1.5rem;
 }
 
 .nav-search {
 	padding: 0;
 }
 
-span.in {
-	font-size: 18px;
+#searchingInSection {
+	font-size: 1.25rem;
+	margin-top: 10px;
+	float: left;
 }
 
-.categ-button {
-	font-size: 12px;
-	height: 24px;
-	line-height: 24px;
-	margin: 0 5px 0 5px;
-	padding: 0 5px 0 5px;
-	width: 25%;
+.searchinInText, .categ-option {
+	margin-right: 1em;
+	float: left;
+}
+
+[type="checkbox"]+label.categ-label {
+	padding-left: 1.75rem;
+}
+
+#resultsSection {
+	clear: both;
+	padding-top: 0.25em;
 }
 
 
@@ -37,7 +50,6 @@ span.in {
 
 #toast-container {
 	top: 20%;
-	right: 50%;
 }
 
 @media screen and (max-width: 600px) {
@@ -45,12 +57,8 @@ span.in {
 		background-color: #5d4037;
 	}
 
-	.categ-button {
-		margin-top: -10px;
-	}
-
-	span.in {
-		color: #5d4037;
+	.categ-option {
+		clear: left;
 	}
 
 	#toast-container {

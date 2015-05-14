@@ -6,7 +6,11 @@ angular.module('repoSearchApp', [
   'repoSearchApp.directives',
   'repoSearchApp.controllers',
   'repoSearchApp.services'
-]);
+]).run(function() {
+    $('#resultsList').collapsible({
+      accordion: true
+    });
+});
 
 angular.module('repoSearchApp.config', [])
   .constant('GITHUB', {
@@ -17,5 +21,6 @@ angular.module('repoSearchApp.config', [])
         {'name':'description', 'selected': true}, 
         {'name':'readme', 'selected': true}
       ],
+    'rate_limit_header': 'x-ratelimit-remaining',
     'response_array': 'items'
   });

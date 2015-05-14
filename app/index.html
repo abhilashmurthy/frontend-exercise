@@ -28,20 +28,22 @@
 	<nav class="brown darken-4">
 		<div class="nav-wrapper">
 			<div class="row">
-				<div class="nav-part col m2 s6">
+				<div class="nav-part col l2 m2 s4">
 					<a href="#!" class="nav-brand-logo">Github Repos</a>
 				</div>
-				<div class="nav-part nav-search col m6 s12" style="padding: 0;">
+				<div class="nav-part nav-search col l10 m10 s8" style="padding: 0;">
 					<form class="nav-search-bar">
 						<div class="input-field">
 							<input id="search" type="search" required 
 								ng-model="searchKeyword" 
-								ng-enter="searchGithub()">
+								ng-keyup="changeSearch()"
+								ng-enter="searchGithub()"
+							>
 							<label for="search"><i class="mdi-action-search"></i></label>
 						</div>
 					</form>
 				</div>
-				<div class="nav-part nav-categ col m4 s12">
+<!-- 				<div class="nav-part nav-categ col m4 s12">
 					<span class="in">in</span>
 					<a class="categ-button waves-effect waves-light" 
 						ng-repeat="category in categories" 
@@ -49,33 +51,38 @@
 						ng-click="categorySelect(category.selected, $index)">
 						{{category.name}}
 						</a>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</nav>
 	<div class="container">
-		<div class="switch" ng-switch="searchingNow">
-			<div ng-switch-when=true>
-				<div class="preloader-wrapper big active">
-					<div class="spinner-layer spinner-blue">
-					<div class="circle-clipper left">
-					<div class="circle"></div>
-					</div><div class="gap-patch">
-					<div class="circle"></div>
-					</div><div class="circle-clipper right">
-					<div class="circle"></div>
-					</div>
+		<div ng-if="rate_limit">
+			<div ng-if="!hasResults">
+
+			</div>
+			<div ng-if="hasResults">
+				<div id="searchingInSection">
+					<span class="searchinInText center-align">Searching in</span>
+					<div class="categ-option" ng-repeat="category in categories">
+						<input type="checkbox" class="filled-in" id="checkbox_{{category.name}}"
+							ng-checked="category.selected ? 'checked' : ''"
+							ng-click="changeCategory(category.selected, $index)"
+						 />
+						<label class="categ-label" for="checkbox_{{category.name}}">{{category.name}}</label>
 					</div>
 				</div>
+				<div id="resultsSection">
+					<ul id="resultsList" class="collapsible" data-collapsible="accordion">
+						<li class="result" ng-repeat="result in results">
+							<div class="collapsible-header"><i class="mdi-image-filter-drama"></i>{{result.full_name}}</div>
+							<div class="collapsible-body">{{result.git_url}}</div>
+						</li>
+					</ul>
+				</div>
 			</div>
-			<div ng-switch-default>
-				<ul id="resultsList" class="collapsible" data-collapsible="accordion">
-					<li class="result" ng-repeat="result in results">
-						<div class="collapsible-header"><i class="mdi-image-filter-drama"></i>{{result.full_name}}</div>
-						<div class="collapsible-body">{{result.git_url}}</div>
-					</li>
-				</ul>
-			</div>
+		</div>
+		<div ng-if="!rate_limit">
+			<blockquote>Rate limit reached, please refresh and try again in 60 seconds...</blockquote>
 		</div>
 	</div>
 </body>
