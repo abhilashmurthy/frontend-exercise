@@ -58,7 +58,23 @@
 	<div class="container">
 		<div ng-if="rate_limit">
 			<div ng-if="!hasResults">
-
+				<h5 class="welcome"><i class="mdi-maps-navigation"></i> is where you search..</h5>
+					<div class="card repoCard flow-text">
+						<div class="card-content">
+							<span class="card-title activator grey-text text-darken-4">
+								tradegecko/frontend-exercise
+								<i class="mdi-navigation-more-vert right"></i>
+							</span>
+						</div>
+					</div>
+					<div class="card repoCard flow-text">
+						<div class="card-content">
+							<span class="card-title activator grey-text text-darken-4">
+								abhilashmurthy/social-bubbles
+								<i class="mdi-navigation-more-vert right"></i>
+							</span>
+						</div>
+					</div>
 			</div>
 			<div ng-if="hasResults">
 				<div id="searchingInSection">
@@ -72,10 +88,11 @@
 					</div>
 				</div>
 				<div id="resultsSection">
-					<ul id="resultsList" class="collapsible" data-collapsible="accordion">
-						<li class="result" ng-repeat="result in results">
+					<ul id="resultsList" class="collapsible" data-collapsible="expandable"
+						ng-repeat="result in results">
+						<li>
 							<div class="collapsible-header"><i class="mdi-image-filter-drama"></i>{{result.full_name}}</div>
-							<div class="collapsible-body">{{result.git_url}}</div>
+							<div class="collapsible-body">{{result.git_url}</div>
 						</li>
 					</ul>
 				</div>

@@ -62,13 +62,16 @@ nav .nav-wrapper i.mdi-action-search {
 	}
 
 	#toast-container {
-		bottom: 0%;
+		position: absolute;
+		bottom: 0;
 		width: 100%;
 	}
 }
 
-/** RESULTS **/
+.repoCard {
+	height: 5rem;
+}
 
-#resultsList {
-	margin-top: 20px;
+.innerCard {
+	width: 20%;
 }

@@ -22,7 +22,7 @@ angular.module('repoSearchApp.controllers', ['repoSearchApp.config'])
 		$scope.rate_limit = 60;
 		$scope.searchGithub = function() {
 			if (!$scope.searchKeyword) {
-				Materialize.toast('Please enter a keyword!', 3000)
+				Materialize.toast('Please enter a search keyword!', 3000)
 				return;
 			}
 
